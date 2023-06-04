@@ -24,13 +24,14 @@ class image_scraper(commands.Cog):
         required=False
     )
     async def scrape(self, ctx, search: str, number: str = 1):
-        if not os.path.exists(os.path.join(os.getcwd(), f"data/tmp")):
-            os.mkdir(os.path.join(os.getcwd(), f"data/tmp"))
+        server_id = str(ctx.guild.id)
+        if not os.path.exists(os.path.join(os.getcwd(), f"data/{server_id}")):
+            os.mkdir(os.path.join(os.getcwd(), f"data/{server_id}"))
         print(binary_path)
         await ctx.respond("scraping images")
-        img_scraper.search_and_download(search, 'data/tmp/', number)
+        img_scraper.search_and_download(search, 'data/{server_id}/', number)
         time.sleep(2)
-        await ctx.send(file=discord.File(f"data/tmp/{search}.jpg"))
+        await ctx.send(file=discord.File(f"data/{server_id}/{search}.jpg"))
         await ctx.respond("done")
 
 def setup(bot):

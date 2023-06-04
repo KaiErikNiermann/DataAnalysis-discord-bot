@@ -102,7 +102,7 @@ def download_image(folder_path: str, url: str, search_term: str, driver: webdriv
         print(f"ERROR - Could not save {url} - {e}")
 
 
-def search_and_download(search_term: str, target_path="./images", number_images=1):
+def search_and_download(search_term: str, target_path, number_images=1):
     driver = webdriver.Chrome(
         ChromeDriverManager().install(), chrome_options=chrome_options
     )
@@ -113,9 +113,9 @@ def search_and_download(search_term: str, target_path="./images", number_images=
         os.makedirs(target_folder)
 
     # search the image
-    with driver as wd:
+    with driver:
         res = fetch_image_urls(
-            search_term, number_images, wd=driver, sleep_between_interactions=0.01
+            search_term, number_images, wd=driver, sleep_between_interactions=1
         )
 
     # download the image
@@ -126,7 +126,7 @@ def search_and_download(search_term: str, target_path="./images", number_images=
 def main():
     a = str
     b = str
-    search_and_download(a, b, c="./images", num=5)
+    search_and_download(a, b, number_images=5)
 
 
 if __name__ == "__main__":
