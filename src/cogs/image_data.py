@@ -5,6 +5,7 @@ from discord.ext import commands
 from discord import option
 from utils import img_scraper
 from chromedriver_py import binary_path
+from utils import util
 
 class image_scraper(commands.Cog):
     def __init__(self, bot):
@@ -25,14 +26,15 @@ class image_scraper(commands.Cog):
     )
     async def scrape(self, ctx, search: str, number: str = 1):
         server_id = str(ctx.guild.id)
-        if not os.path.exists(os.path.join(os.getcwd(), f"data/{server_id}")):
-            os.mkdir(os.path.join(os.getcwd(), f"data/{server_id}"))
-        print(binary_path)
-        await ctx.respond("scraping images")
-        img_scraper.search_and_download(search, 'data/{server_id}/', number)
-        time.sleep(2)
+        util.setup_dir(server_id)
+        await ctx.respond("searching")
+
+        img_scraper.search_and_download(search, f"data/{server_id}/", number)
+
         await ctx.send(file=discord.File(f"data/{server_id}/{search}.jpg"))
-        await ctx.respond("done")
+        
+        os.remove(f"data/{server_id}/{search}.jpg")
+        util.destroy_dir(server_id)
 
 def setup(bot):
     bot.add_cog(image_scraper(bot))

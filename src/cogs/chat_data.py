@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from discord.ext import commands
 from discord import option
+from utils import util
 
 class chat_data(commands.Cog):
     def __init__(self, bot):
@@ -69,7 +70,7 @@ class chat_data(commands.Cog):
 
         await ctx.send(file=discord.File(file_path))
 
-        shutil.rmtree(os.path.join(os.getcwd(), f"data/{self.server_id}"))
+        util.destroy_dir(self.server_id)
         plt.close()
 
     @commands.slash_command()
@@ -98,8 +99,7 @@ class chat_data(commands.Cog):
         server_id = str(ctx.guild.id)
         imfp = f"chatdata{days}.png"
         file_path = os.path.join(os.getcwd(), f"data/{server_id}", imfp)
-        if not os.path.exists(os.path.join(os.getcwd(), f"data/{server_id}")):
-            os.mkdir(os.path.join(os.getcwd(), f"data/{server_id}"))
+        util.setup_dir(server_id)
 
         start_date = start_date if start_date else self.todaydate - datetime.timedelta(days=int(days))
         end_date =  end_date if end_date else self.todaydate
@@ -133,7 +133,6 @@ class chat_data(commands.Cog):
             self.cache_message_data(counts, dates)
 
         self.graph_handler(counts, file_path, days, date_strs, ctx)
-
 
 
 def setup(bot):

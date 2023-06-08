@@ -16,16 +16,19 @@ chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--disable-blink-features=AutomationControlled")
 
+
+def scroll_to_end(wd):
+    wd.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    time.sleep(0.1)
+
+
+
 def fetch_image_urls(
     query: str,
     max_links_to_fetch: int,
     wd: webdriver,
     sleep_between_interactions: int = 0.01,
 ):
-    def scroll_to_end(wd):
-        wd.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(sleep_between_interactions)
-
     # build the google query
     search_url = "https://www.google.com/search?safe=off&site=&tbm=isch&source=hp&q={q}&oq={q}&gs_l=img"
 
@@ -58,7 +61,7 @@ def fetch_image_urls(
                 continue
 
             actual_images: List[WebElement] = wd.find_elements(
-                By.CSS_SELECTOR, "img.n3VNCb"
+                By.CSS_SELECTOR, "img.Q4LuWd"
             )
 
             for actual_image in actual_images:
@@ -69,15 +72,16 @@ def fetch_image_urls(
 
             if len(image_urls) >= max_links_to_fetch:
                 print(f"Found: {len(image_urls)} image links, done!")
+
                 return image_urls
         else:
             load_more_button: WebElement = wd.find_elements(By.CSS_SELECTOR, ".mye4qd")
             if load_more_button:
                 wd.execute_script("document.querySelector('.mye4qd').click();")
-            else: 
+            else:
                 print("No more images")
                 return image_urls
-        
+
         # move the result startpoint further down
         results_start = len(thumbnail_results)
 
@@ -85,7 +89,6 @@ def fetch_image_urls(
 def download_image(folder_path: str, url: str, search_term: str, driver: webdriver):
     try:
         image_content = requests.get(url).content
-
     except Exception as e:
         print(f"ERROR - Could not download {url} - {e}")
 
