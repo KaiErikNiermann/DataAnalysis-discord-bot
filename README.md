@@ -6,7 +6,7 @@
 
 ## Description
 
-This is a Discord bot built using Python and Discord.py. The bot is designed to perform various tasks on the Discord platform, such as moderating channels, playing music, and providing information to users.
+This is a Discord bot built using Python and Discord.py. The bot is designed to perform various with a primary focus being on using the server ( and other ) data for entertaining purposes. 
 
 ## Features
 
@@ -14,7 +14,7 @@ This is a Discord bot built using Python and Discord.py. The bot is designed to 
 
 - Chat data analytics
 
-- User emulation via Markovify 
+- User emulation via Markovify based on chat logs
 
 ## Installation
 
