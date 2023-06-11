@@ -20,7 +20,7 @@ This is a Discord bot built using Python and Discord.py. The bot is designed to 
 
 1. Clone the repository
 ```
-git clone https://github.com/username/repo.git
+git clone https://github.com/KaiErikNiermann/DataAnalysis-discordBot.git
 ```
 
 2. Install the required packages
