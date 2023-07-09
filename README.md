@@ -6,7 +6,7 @@
 
 ## Description
 
-This is a Discord bot built using Python and Discord.py. The bot is designed to perform various with a primary focus being on using the server ( and other ) data for entertaining purposes. 
+This is a Discord bot built using Python and Discord.py. The bot is designed to perform various forms of data analysis with a primary focus being on using the server ( and other ) data for entertaining purposes. 
 
 ## Features
 
