@@ -4,7 +4,6 @@ import os
 import string
 import discord
 import csv
-import shutil
 import matplotlib.pyplot as plt
 import numpy as np
 from discord.ext import commands

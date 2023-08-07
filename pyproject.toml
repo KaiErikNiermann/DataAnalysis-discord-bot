@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "data-analysis-bot"
+version = "0.1.0"
+description = "Discord bot that uses various forms of data analysis for entertaining purposes"
+authors = ["Kai Erik Niermann <kai.niermann@gmail.com>"]
+readme = "README.md"
+packages = [{include = "data_analysis_bot"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+aiohttp = "^3.8.5"
+attrs = "^23.1.0"
+pyyaml = "5.1.2"
+datetime = "^5.2"
+collection = "^0.1.6"
+texteditor = "^1.4.1"
+py-cord = "^2.4.1"
+markovify = "^0.9.4"
+pillow = "^10.0.0"
+selenium = "^4.11.2"
+requests = "^2.31.0"
+webdriver-manager = "^4.0.0"
+regex = "^2023.6.3"
+chromedriver-py = "^114.0.5735.90"
+utils = "^1.0.1"
+numpy = "^1.25.2"
+matplotlib = "^3.7.2"
+pybind11 = "^2.11.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
