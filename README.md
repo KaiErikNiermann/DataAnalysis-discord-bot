@@ -6,7 +6,7 @@
 
 ## Description
 
-This is a Discord bot built using Python and Discord.py. The bot is designed to perform various forms of data analysis with a primary focus being on using the server ( and other ) data for entertaining purposes. 
+This is a Discord bot built using Python and Discord.py. The bot is designed to perform various forms of data analysis with a primary focus being on using the server ( and other ) data for entertaining purposes.
 
 ## Features
 
@@ -19,34 +19,31 @@ This is a Discord bot built using Python and Discord.py. The bot is designed to 
 ## Installation
 
 1. Clone the repository
-```
+
+```bash
 git clone https://github.com/KaiErikNiermann/DataAnalysis-discordBot.git
 ```
 
 2. Install the required packages
-```
-pip install -r requirements.txt
+
+For this project I used poetry, if you do not want to deal with poetry then you can use the Docker container to run the bot. Otherwise do
+
+```bash
+poetry install
 ```
 
-3. Create a bot on the Discord developer portal
+3. Configure the bot
 
-4. Add the bot token to the `config.yaml` file in the format 
+You have to configure the bot, to do this create an application on the discord developer portal and add in the token and prefix you want to use.
+
 ```yaml
 bot: 
   token: 'TOKEN'
   prefix: 'PREFIX'
 ```
 
-5. Run the bot
-```
-make run
-```
-
 ## Usage
 
 - `/chatdata <date> <start_date> <end_date>`
 - `/search_image <name> <number>`
-- `/speak` 
-
-
-
+- `/speak`
