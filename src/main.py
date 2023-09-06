@@ -12,7 +12,7 @@ PREFIX = config["bot"]["prefix"]
 
 intents = discord.Intents.default()
 intents.message_content = True
-bot = discord.Bot(intents=intents)
+bot = commands.Bot(command_prefix=PREFIX, intents=intents)
 
 # registering the cogs
 cogs = [
